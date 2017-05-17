@@ -27,7 +27,11 @@ export default class MyListView extends Component{
 
 //渲染一个正常item
 	renderContent(rowData) {
-		return <ContentItem rowData={rowData}/>
+		return (
+			<ContentItem 
+				onPress={this.onPress}
+				rowData={rowData}/>
+		)
 	}
 
 	// 渲染One的item
@@ -37,6 +41,13 @@ export default class MyListView extends Component{
 				weather={this.props.weather}
 				rowData={rowData}/> 
 		)
+	}
+
+//点击item跳转到详情页面
+	onPress = (url, title) => {
+		//Stack的navigation
+		const {navigate} = this.props.navigation;
+		navigate('Detail', {title: title, url: url});
 	}
 }
 

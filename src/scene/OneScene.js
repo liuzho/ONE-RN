@@ -43,6 +43,7 @@ export default class OneScene extends Component{
 	renderLv() {
 		return(
 			<MyListView
+				navigation={this.props.navigation}
 				weather={this.state.weather}
 				data={this.state.dataOne}/>
 		);

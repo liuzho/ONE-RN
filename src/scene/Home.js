@@ -5,6 +5,7 @@ import {
   View,
   Image,
   StyleSheet,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 import {
@@ -16,24 +17,25 @@ import ReadScene from './ReadScene';
 import MusicScene from './MusicScene';
 import MovieScene from './MovieScene';
 
+
 const Home = TabNavigator({
 		One: {
 			screen: OneScene,
 			navigationOptions: {
-				tabBarIcon: ({tintColor}) => (
-					<Image
-						source={require('../img/home.png')}
-						style={styles.tabImg}
-					/>
+				tabBarIcon: ({focused, tintColor}) => (
+						<Image
+							source={focused ? require('../img/home_active.png') : require('../img/home.png')}
+							style={styles.tabImg}
+						/>
 				),
 			},
 		},
 		Read: {
 			screen: ReadScene,
 			navigationOptions: {
-				tabBarIcon: ({tintColor}) => (
+				tabBarIcon: ({focused, tintColor}) => (
 					<Image
-						source={require('../img/reading.png')}
+						source={focused ? require('../img/reading_active.png') : require('../img/reading.png')}
 						style={styles.tabImg}
 					/>
 				),
@@ -42,9 +44,9 @@ const Home = TabNavigator({
 		Music: {
 			screen: MusicScene,
 			navigationOptions: {
-				tabBarIcon: ({tintColor}) => (
+				tabBarIcon: ({focused, tintColor}) => (
 					<Image
-						source={require('../img/music.png')}
+						source={focused ? require('../img/music_active.png') : require('../img/music.png')}
 						style={styles.tabImg}
 					/>
 				),
@@ -53,15 +55,16 @@ const Home = TabNavigator({
 		Movie: {
 			screen: MovieScene,
 			navigationOptions: {
-				tabBarIcon: ({tintColor}) => (
-					<Image
-						source={require('../img/movie.png')}
-						style={styles.tabImg}
-					/>
-				),
+				tabBarIcon: ({focused, tintColor}) => {
+					return (
+						<Image
+							source={focused ? require('../img/movie_active.png') : require('../img/movie.png')}
+							style={styles.tabImg}/>
+				)},
 			},
 		},
 	}, {
+	initialRouteName: 'One',
   tabBarPosition: 'bottom',//tabbar放在底部
   swipeEnabled: false,//不能滑动切换
   animationEnabled: false,//不要切换动画
