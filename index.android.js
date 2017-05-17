@@ -19,11 +19,22 @@ const App = StackNavigator({
 			screen: DetailScene,
 			navigationOptions: ({navigation}) => ({
 				header: (
-					<Toolbar 
+					<Toolbar
 						title={navigation.state.params.title}/>
 				),
 			}),
 		},
-	});
+	}, {
+		initialRouteParams: {
+			title: '一个',
+		},
+		navigationOptions: ({navigation}) => ({
+			header: (
+					<Toolbar 
+						inHome={true}
+						title={navigation.state.params.title}/>
+				),
+		}),
+});
 
 AppRegistry.registerComponent('ONE', () => App);

@@ -169,7 +169,8 @@ const styles = StyleSheet.create({
 		marginTop: 8,
 	},
 	bottomTxt: {
-		lineHeight: 18,
+		lineHeight: 17,
+		height: 18,
 		fontSize: 11,
 		color: '#BBBBBB',
 		marginRight: 5,
@@ -183,7 +184,6 @@ const styles = StyleSheet.create({
 		width: width,
 		flexDirection: 'row',
 	},
-
 	musicRightImg: {
 		height: widthM2,
 		alignSelf: 'flex-end',

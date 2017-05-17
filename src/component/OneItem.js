@@ -140,6 +140,6 @@ const styles = StyleSheet.create({
 	bottomTxt: {
 		color: '#888888',
 		fontSize: 10,
-		lineHeight: 18,
+		lineHeight: 16,
 	},
 });
