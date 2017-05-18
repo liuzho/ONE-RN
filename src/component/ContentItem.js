@@ -43,6 +43,7 @@ export default class ContentItem extends Component{
 									<Image style={styles.xiamiImg} 
 										source={require('../img/xiami.png')}/>
 									<Image style={styles.cdImg}
+										resizeMode="contain"
 										source={{uri: data.imgUrl}}>
 										{/*<TouchableWithoutFeedback 
 											onPress={()=>{alert('click')}}>
@@ -58,9 +59,11 @@ export default class ContentItem extends Component{
 							</View>
 						) : (
 							<Image style={[styles.imgPic,{height: this.state.imgHeight,}]} 
+								resizeMode="contain"
 								source={{uri: data.imgUrl}}/>
 						)
 					}
+					<Text style={data.contentType == contentMusic ? styles.musicNameTxt : {height: 0,}}>this is music name</Text>
 					<Text style={styles.contentTxt}>{data.content}</Text>
 					<Text style={data.contentType == contentMovie ? styles.movieNameTxt : {height: 0,}}> {`--《${data.movieName}》`} </Text>
 					<View style={styles.bottomBox}>

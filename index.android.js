@@ -10,6 +10,7 @@ import {
 } from 'react-navigation';
 import HomeScene from './src/scene/Home';//主页
 import DetailScene from './src/scene/DetailScene';//内容详情页
+import UserScene from './src/scene/UserScene';//用户界面
 import Toolbar from './src/component/Toolbar';//Toolbar
 const App = StackNavigator({
 		Home: {
@@ -20,8 +21,18 @@ const App = StackNavigator({
 			navigationOptions: ({navigation}) => ({
 				header: (
 					<Toolbar
+						navigation={navigation}
 						title={navigation.state.params.title}/>
 				),
+			}),
+		},
+		User: {
+			screen: UserScene,
+			navigationOptions: ({navigation}) => ({
+				<Toolbar
+					onlyLeft={true}
+					navigation={navigation}
+					bgColor={'rga(0,0,0,0)'}/>
 			}),
 		},
 	}, {
@@ -32,6 +43,7 @@ const App = StackNavigator({
 			header: (
 					<Toolbar 
 						inHome={true}
+						navigation={navigation}
 						title={navigation.state.params.title}/>
 				),
 		}),

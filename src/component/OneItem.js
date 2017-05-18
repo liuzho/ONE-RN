@@ -39,7 +39,7 @@ export default class OneItem extends Component{
 				</View>
 				<Text style={styles.titleTxt}>{`${rowData.title} | ${rowData.pic_info}`}</Text>
 				<Text style={styles.contentTxt}>{rowData.forward}</Text>
-				<Text style={styles.titleTxt}>{rowData.words_info}</Text>
+				<Text style={styles.authorTxt}>{rowData.words_info}</Text>
 				<View style={styles.bottom}>
 					<Image style={styles.bottomImg}
 						source={require('../img/bubble_edit.png')}/>
@@ -126,6 +126,12 @@ const styles = StyleSheet.create({
 		marginLeft: 40,
 		marginRight: 40,
 	},
+	authorTxt: {
+		fontSize: 11,
+		color: '#888888',
+		marginTop: 14,
+		marginBottom: 14,
+	}
 	bottom: {
 		marginTop: 10,
 		flexDirection: 'row',
