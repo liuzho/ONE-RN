@@ -14,6 +14,10 @@
 
 我的个人主页 => **[https://liuzho.com](https://liuzho.com)**
 
+尽管Kotlin风光无限占据所有Google粉程序猿的大脑(包括我而且我并不会Kotlin)，但我还是把这个Demo发出来了？？！
+
+没事，ReactNative自有魅力！(全给你学了管你谁有魅力).....
+
 ### 这个Demo对你有没有帮助？
 
 如果你初学RN，那么帮助可能有限，请你点个赞/点个star，以备后续学习
@@ -32,12 +36,23 @@
 
 你需要这样做：
 
-1. a
-2. b
-3. c
-4. d
+1. `git clone https://github.com/liuzho/ONE-RN.git`
+
+2. `cd ONE-RN`
+
+3. `npm install`
+
+4. `react-native run-ios` or `react-native run-android`
+
+理论上iOS和Android都可以运行
 
 ### 项目情况
+
+```json
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.0",
+    "react-navigation": "^1.0.0-beta.9"
+```
 
 1. **StackNavigator / TabNavigator的使用**
 
@@ -75,7 +90,7 @@
 
 ## 结语
 
->- 更多内容欢迎访问**[我的主页](https://liuzho.com)**或**[我的博客](https://liuzho.github.io)**
+>- 更多内容欢迎访问[**我的主页**](https://liuzho.com)或[**我的博客**](https://liuzho.github.io)
 >- 觉得本文/本Demo对你有所帮助，请不要忘了点一下文末的"♡"让他变成"❤"
 >- 当然，也别忘了Star一下我的仓库 => **[ONE-RN](https://github.com/liuzho/ONE-RN)**
 >- 学习就是耐住寂寞不断踩坑，多动手敲就能有更多的知识经验和肩椎脊柱受损T_T
