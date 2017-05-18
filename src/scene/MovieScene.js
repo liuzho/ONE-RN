@@ -39,8 +39,13 @@ export default class MovieScene extends Component{
 	renderLv() {
 		return(
 			<MyListView
+				navigation={this.props.screenProps.appNavigation}
 				data={this.state.movieData}/>
 		);
+	}
+
+	componentDidMount() {
+		this.fetchMovie();
 	}
 
 	fetchMovie() {

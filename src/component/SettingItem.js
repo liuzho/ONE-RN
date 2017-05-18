@@ -5,34 +5,42 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 export default class SettingItem extends Component{
 
 	render() {
-		<View style={styles.body}>
-			<Image style={styles.icon}
-				source={this.props.leftSource}/>
-			<Text style={styles.infoTxt}>{this.props.info}</Text>
-			<View style={{flex: 1,}}/>
-			<Image style={styles.icon}
-				source={this.props.rightSource}/>
-		</View>
+		return(
+			<TouchableWithoutFeedback
+				onPress={this.props.onPress}>
+				<View style={styles.body}>
+					<Image style={styles.icon}
+						source={this.props.leftSource}/>
+					<Text style={styles.infoTxt}>{this.props.info}</Text>
+					<View style={{flex: 1,}}/>
+					<Image style={styles.icon}
+						source={this.props.rightSource}/>
+				</View>
+			</TouchableWithoutFeedback>
+		);
 	}
 }
 
 const styles = StyleSheet.create({
 	body: {
-		flexDirecion: 'row',
+		flexDirection: 'row',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
 		backgroundColor: '#FFFFFF',
 		height: 50,
-		padding: 6,
+		padding: 10,
 	},
 	icon: {
-		height: 18,
-		width: 18,
+		height: 20,
+		width: 20,
+		marginRight: 10,
 	},
 	infoTxt: {
 		fontSize: 14,

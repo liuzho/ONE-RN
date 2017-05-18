@@ -37,10 +37,14 @@ export default class MusicScene extends Component{
 	renderLv() {
 		return(
 			<MyListView
+				navigation={this.props.screenProps.appNavigation}
 				data={this.state.musicData}/>
 		);
 	}
 
+	componentDidMount() {
+		this.fetchMusic();
+	}
 
 	fetchMusic() {
 		fetch(MUSIC_URL)

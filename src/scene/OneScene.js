@@ -14,6 +14,7 @@ const ONE_URL = 'http://v3.wufazhuce.com:8000/api/onelist/idlist/?channel=wdj&ve
 
 export default class OneScene extends Component{
 
+
 	constructor(props){
 		super(props);
 		this.state = {
@@ -43,7 +44,7 @@ export default class OneScene extends Component{
 	renderLv() {
 		return(
 			<MyListView
-				navigation={this.props.navigation}
+				navigation={this.props.screenProps.appNavigation}
 				weather={this.state.weather}
 				data={this.state.dataOne}/>
 		);
@@ -79,11 +80,27 @@ export default class OneScene extends Component{
 			this.setState({
 				dataId_arr: jsonData.data,
 			});
-			this.fetchOne(this.state.dataId_arr[0]);
+
+			this.fetchOne(this.getId());
 		})
 		.catch((error) => {
 			alert(`fetchDataId:${error}`);
 		});
+	}
+
+//根据路由判断是第几个OnceScene，由此返回id数组中正确的元素
+	getId = () => {
+		let num = 0;
+
+		if (this.props.navigation.state.params) {
+				num = this.props.navigation.state.params.num;
+				this.props.navigation.state.params.num++;
+			} else {
+				this.props.navigation.setParams({
+					num: num,
+				});
+			}
+		return this.state.dataId_arr[num];
 	}
 }
 
@@ -93,5 +110,4 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-
 });

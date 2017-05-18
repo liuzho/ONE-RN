@@ -18,12 +18,14 @@ let width = windowWidth - 20;//内容宽度
 let widthM4 = width / 4;//宽度1/4
 let widthM2 = width / 2;//宽度1/2
 
+let cdCircle = require('../img/cdCircle.png');
+
 export default class ContentItem extends Component{
 
 	constructor(props){
 		super(props);
 		this.state = {
-			imgHeight: 200,//图片高度，最终由Image.getSize决定
+			imgHeight: 220,//图片默认高度，最终由Image.getSize决定
 		};
 	}
 
@@ -42,14 +44,22 @@ export default class ContentItem extends Component{
 								<View>
 									<Image style={styles.xiamiImg} 
 										source={require('../img/xiami.png')}/>
+									{/*这里我真服，image里面嵌套组件就导致borderRadius失效，不能做成圆形CD图片
+									我用一个圆形的图片包裹，隐藏掉圆形外部的部分，制造一个圆形，就会导致滑动到该地方的时候一瞬间正方形出现
+									虽然这样不好，另外一种解决方法我就不试了==>用View包裹这些image，然后image通过positon定位到中心，实现图片重叠
+									不知道这样会不会还有奇怪的bug？不管了，就这样，不试了*/}
 									<Image style={styles.cdImg}
 										resizeMode="contain"
 										source={{uri: data.imgUrl}}>
-										{/*<TouchableWithoutFeedback 
-											onPress={()=>{alert('click')}}>
-											<Image style={{height: 28,width:28,}}
-												source={require('../img/play.png')} />
-										</TouchableWithoutFeedback>*/}
+										<Image style={styles.cdCircle}
+											resizeMode="stretch"
+											source={cdCircle}>
+											<TouchableWithoutFeedback 
+												onPress={()=>{alert('play')}}>
+												<Image style={{height: 28,width:28,}}
+													source={require('../img/play.png')} />
+											</TouchableWithoutFeedback>
+										</Image>
 									</Image>
 								</View>
 								<View style={{flex: 1,}}/>
@@ -58,12 +68,12 @@ export default class ContentItem extends Component{
 									source={require('../img/music_right.png')} />
 							</View>
 						) : (
-							<Image style={[styles.imgPic,{height: this.state.imgHeight,}]} 
-								resizeMode="contain"
+							<Image style={[styles.imgPic, {height: this.state.imgHeight,}]} 
+								resizeMode="stretch"
 								source={{uri: data.imgUrl}}/>
 						)
 					}
-					<Text style={data.contentType == contentMusic ? styles.musicNameTxt : {height: 0,}}>this is music name</Text>
+					<Text style={data.contentType == contentMusic ? styles.musicNameTxt : {height: 0,}}>{data.musicInfo}</Text>
 					<Text style={styles.contentTxt}>{data.content}</Text>
 					<Text style={data.contentType == contentMovie ? styles.movieNameTxt : {height: 0,}}> {`--《${data.movieName}》`} </Text>
 					<View style={styles.bottomBox}>
@@ -116,6 +126,7 @@ export default class ContentItem extends Component{
 			time: 'n小时前',
 			likeCount: rowData.like_count,
 			url: rowData.share_info.url,
+			musicInfo: `${rowData.music_name} · ${rowData.audio_author} | ${rowData.audio_album}`,
 		};
 	}
 
@@ -201,9 +212,19 @@ const styles = StyleSheet.create({
 	cdImg: {
 		height: widthM2,
 		width: widthM2,
+		marginLeft: widthM4,
+		borderRadius: width,
+	},
+	cdCircle: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginLeft: widthM4,
-		borderRadius: widthM4,
+		height: widthM2,
+		width: widthM2,
+	},
+	musicNameTxt: {
+		width: width,
+		marginTop: 8,
+		fontSize: 12,
+		color: '#BBBBBB',
 	},
 });

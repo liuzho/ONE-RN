@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 		color: '#888888',
 		marginTop: 14,
 		marginBottom: 14,
-	}
+	},
 	bottom: {
 		marginTop: 10,
 		flexDirection: 'row',
