@@ -12,8 +12,12 @@ import MyListView from '../component/MyListView';
 //好特么长的API
 const ONE_URL = 'http://v3.wufazhuce.com:8000/api/onelist/idlist/?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android';
 
-export default class OneScene extends Component{
+//这个OnceScene该显示哪一天的内容
+let num = 0;
 
+let titleArr = ['一个','昨天','前天','三天前','四天前','五天前','六天前','七天前','八天前','九天前'];
+
+export default class OneScene extends Component{
 
 	constructor(props){
 		super(props);
@@ -42,9 +46,10 @@ export default class OneScene extends Component{
 	}
 //渲染listView展示数据
 	renderLv() {
+		let appNavigation = this.props.screenProps.appNavigation;
 		return(
 			<MyListView
-				navigation={this.props.screenProps.appNavigation}
+				navigation={appNavigation}
 				weather={this.state.weather}
 				data={this.state.dataOne}/>
 		);
@@ -90,16 +95,13 @@ export default class OneScene extends Component{
 
 //根据路由判断是第几个OnceScene，由此返回id数组中正确的元素
 	getId = () => {
-		let num = 0;
-
-		if (this.props.navigation.state.params) {
-				num = this.props.navigation.state.params.num;
-				this.props.navigation.state.params.num++;
-			} else {
-				this.props.navigation.setParams({
-					num: num,
-				});
-			}
+		let params = this.props.screenProps.appNavigation.state.params;
+		num = params.oneSceneNum;
+		if (num > 9 || num < 0) {
+			alert('unknow error');
+			return;
+		}
+		params.oneSceneNum++;
 		return this.state.dataId_arr[num];
 	}
 }

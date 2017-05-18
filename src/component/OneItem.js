@@ -30,7 +30,7 @@ export default class OneItem extends Component{
 		return(
 			<View style={styles.itemBody}>
 				<Text style={styles.dateTxt}>{date}</Text>
-				<Text style={styles.cityTxt}>{`${weather.climate},${weather.city_name}`}</Text>
+				<Text style={styles.cityTxt}>{`${weather.climate}，${weather.city_name}`}</Text>
 				<View style={styles.imgBox}>
 					<Image
 						source={{uri: rowData.img_url}}

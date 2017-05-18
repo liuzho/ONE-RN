@@ -10,15 +10,16 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-let windowWidth = Dimensions.get('window').width;
+import CdView from './CdView';
+
+let windowWidth    = Dimensions.get('window').width;
 const contentMovie = 5;
 const contentMusic = 4;
 
-let width = windowWidth - 20;//内容宽度
+let width   = windowWidth - 20;//内容宽度
 let widthM4 = width / 4;//宽度1/4
 let widthM2 = width / 2;//宽度1/2
 
-let cdCircle = require('../img/cdCircle.png');
 
 export default class ContentItem extends Component{
 
@@ -44,23 +45,9 @@ export default class ContentItem extends Component{
 								<View>
 									<Image style={styles.xiamiImg} 
 										source={require('../img/xiami.png')}/>
-									{/*这里我真服，image里面嵌套组件就导致borderRadius失效，不能做成圆形CD图片
-									我用一个圆形的图片包裹，隐藏掉圆形外部的部分，制造一个圆形，就会导致滑动到该地方的时候一瞬间正方形出现
-									虽然这样不好，另外一种解决方法我就不试了==>用View包裹这些image，然后image通过positon定位到中心，实现图片重叠
-									不知道这样会不会还有奇怪的bug？不管了，就这样，不试了*/}
-									<Image style={styles.cdImg}
-										resizeMode="contain"
-										source={{uri: data.imgUrl}}>
-										<Image style={styles.cdCircle}
-											resizeMode="stretch"
-											source={cdCircle}>
-											<TouchableWithoutFeedback 
-												onPress={()=>{alert('play')}}>
-												<Image style={{height: 28,width:28,}}
-													source={require('../img/play.png')} />
-											</TouchableWithoutFeedback>
-										</Image>
-									</Image>
+									<CdView 
+										width={widthM2}
+										source={{uri: data.imgUrl}}/>
 								</View>
 								<View style={{flex: 1,}}/>
 								<Image style={styles.musicRightImg}

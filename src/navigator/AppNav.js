@@ -18,7 +18,7 @@ const AppNav = StackNavigator({
 			screen: HomeScene,
 			navigationOptions: ({navigation}) => ({
 			header: (
-					<Toolbar 
+					<Toolbar
 						inHome={true}
 						navigation={navigation}
 						title={navigation.state.params.title}/>
@@ -48,6 +48,7 @@ const AppNav = StackNavigator({
 		},
 	}, {
 		initialRouteParams: {
+			oneSceneNum: 0,
 			title: '一个',
 		},
 });
