@@ -7,15 +7,14 @@ import {
   Text,
 } from 'react-native';
 
-import MyListView from '../component/MyListView';
+import MyListView     from '../component/MyListView';
+import OneSceneImgPop from '../component/OneSceneImgPop';
 
 //好特么长的API
 const ONE_URL = 'http://v3.wufazhuce.com:8000/api/onelist/idlist/?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android';
 
 //这个OnceScene该显示哪一天的内容
 let num = 0;
-
-let titleArr = ['一个','昨天','前天','三天前','四天前','五天前','六天前','七天前','八天前','九天前'];
 
 export default class OneScene extends Component{
 
@@ -47,13 +46,14 @@ export default class OneScene extends Component{
 //渲染listView展示数据
 	renderLv() {
 		let appNavigation = this.props.screenProps.appNavigation;
-		return(
-			<MyListView
-				navigation={appNavigation}
-				weather={this.state.weather}
-				data={this.state.dataOne}/>
+		return (
+				<MyListView
+					navigation={appNavigation}
+					weather={this.state.weather}
+					data={this.state.dataOne} />
 		);
 	}
+
 
 //组件渲染完成回调此生命周期，API获取数据并存储给this.state.data
 	componentDidMount() {
@@ -67,10 +67,11 @@ export default class OneScene extends Component{
 		.then((response) => response.json())
 		.then((jsonData) => {
 			//取content_list数组并将weather插入到数组头部
-			let arr = jsonData.data.content_list;
+			let data = jsonData.data;
+			data.weather.date = data.date.split(' ')[0].replace('/', ' / ');
 			this.setState({
-				dataOne: arr,
-				weather: jsonData.data.weather,
+				dataOne: data.content_list,
+				weather: data.weather,
 			});
 		})
 		.catch((error) => {

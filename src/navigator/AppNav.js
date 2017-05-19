@@ -11,6 +11,7 @@ import {
 import HomeScene   from '../scene/Home';//主页
 import DetailScene from '../scene/DetailScene';//内容详情页
 import UserScene   from '../scene/UserScene';//用户界面
+import SearchScene from '../scene/SearchScene';//搜索界面
 import Toolbar     from '../component/Toolbar';//Toolbar
 
 const AppNav = StackNavigator({
@@ -44,11 +45,17 @@ const AppNav = StackNavigator({
 				),
 			}),
 		},
+		Search: {
+			screen: SearchScene,
+			navigationOptions: () => ({
+				header: null,
+			}),
+		}
 	}, {
 		initialRouteParams: {
 			oneSceneNum: 0,
 			title: '一个',
-		},
+	},
 });
 
 export default AppNav;

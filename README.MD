@@ -57,6 +57,8 @@
 1. **StackNavigator / TabNavigator的使用**
 
 	你能看到的：底部Tab(TabNavigator)、第一个Tab内类似viewPager滑动(TabNavigator)、跳转到用户/搜索等界面(StackNavigator)
+	
+	为什么不用ViewPagerAndroid来实现第一个Tab内的滑动呢，因为这个组件在iOS不能用啊...GitHub应该有通用组件，我没有去找，用TabNavgation算了吧
 
 2. **组件信息传递props / nav的router携带数据params这些**
 	

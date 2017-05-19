@@ -52,7 +52,7 @@ export default class Toolbar extends Component{
 
 //按下的是用户图标
 	pressUser = () => {
-		this.props.navigation.navigate('User');
+		this.navigate('User');
 	}
 //按下的是返回图标
 	pressBack = () => {
@@ -63,8 +63,13 @@ export default class Toolbar extends Component{
 		ToastAndroid.show('别急...分享晚点写...', ToastAndroid.SHORT);
 	}
 //按下的是搜索图标
-	pressSearch() {
-		ToastAndroid.show('别急...搜索晚点写...', ToastAndroid.SHORT);
+	pressSearch = () => {
+		this.navigate('Search');
+	}
+
+//界面跳转
+	navigate = (sceneName) => {
+		this.props.navigation.navigate(sceneName);
 	}
 }
 
