@@ -20,8 +20,7 @@ const AppNav = StackNavigator({
 			header: (
 					<Toolbar
 						inHome={true}
-						navigation={navigation}
-						title={navigation.state.params.title}/>
+						navigation={navigation}/>
 				),
 		}),
 		},
@@ -30,8 +29,7 @@ const AppNav = StackNavigator({
 			navigationOptions: ({navigation}) => ({
 				header: (
 					<Toolbar
-						navigation={navigation}
-						title={navigation.state.params.title}/>
+						navigation={navigation}/>
 				),
 			}),
 		},

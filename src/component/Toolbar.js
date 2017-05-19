@@ -11,13 +11,21 @@ import {
 
 export default class Toolbar extends Component{
 
+	constructor(props){
+		super(props);
+
+		let {params} = this.props.navigation.state;
+		this.state = {
+			title: params ? params.title : '',
+		};
+	}
+
 	render() {
 		let inHome = this.props.inHome;
-		let title = this.props.title;
 		let onlyLeft = this.props.onlyLeft;
 		return (
 			<View style={[styles.box, this.props.bgColor ? {backgroundColor: this.props.bgColor,borderColor: 'rgba(0,0,0,0)',} : {}]}>
-				<TouchableWithoutFeedback 
+				<TouchableWithoutFeedback
 					onPress={inHome ? this.pressUser : this.pressBack}>
 					<View style={styles.iconBtn}>
 						<Image style={styles.iconLeft}
@@ -25,7 +33,7 @@ export default class Toolbar extends Component{
 					</View>
 				</TouchableWithoutFeedback>
 				<View style={{flex: 1,}}/>
-				<Text style={styles.titleTxt}>{title ? title : ''}</Text>
+				<Text style={styles.titleTxt}>{this.state.title}</Text>
 				<View style={{flex: 1,}}/>
 				{
 					onlyLeft ? (<View/>) : (

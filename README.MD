@@ -40,7 +40,7 @@
 
 2. `cd ONE-RN`
 
-3. `npm install`
+3. `npm install//切记不要用cnpm！亲测cnpm导致无法运行`
 
 4. `react-native run-ios` or `react-native run-android`
 
