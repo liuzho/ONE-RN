@@ -7,8 +7,11 @@ import {
   Text,
   Image,
   Dimensions,
+  TouchableWithoutFeedback,
+  Modal,
 } from 'react-native';
 
+import OneSceneImgPop from './OneSceneImgPop';
 
 let windowWidth = Dimensions.get('window').width;
 
@@ -19,6 +22,7 @@ export default class OneItem extends Component{
 
 		this.state = {
 			imgHeight: 200,
+			popVisible: false,
 		};
 	}
 
@@ -29,14 +33,29 @@ export default class OneItem extends Component{
 		let date = weather.date.replace(/-/g, ' / ');
 		return(
 			<View style={styles.itemBody}>
+				<Modal
+					transparent={true}
+					animationType={'fade'}
+					visible={this.state.popVisible}
+					onRequestClose={()=>{}}>
+					<OneSceneImgPop 
+						imgSize={{height: this.state.imgHeight * 0.9,width: windowWidth*0.9,}}
+						imgUrl={rowData.img_url}
+						volume={rowData.volume}
+						info={`${rowData.title} | ${rowData.pic_info}`}
+						onPress={this.changePopVisible}/>
+				</Modal>
 				<Text style={styles.dateTxt}>{date}</Text>
 				<Text style={styles.cityTxt}>{`${weather.climate}，${weather.city_name}`}</Text>
-				<View style={styles.imgBox}>
-					<Image
-						source={{uri: rowData.img_url}}
-						style={[styles.imgPic, {height: this.state.imgHeight,},]}/>
-					<Text style={styles.volTxt}>{rowData.volume}</Text>
-				</View>
+				<TouchableWithoutFeedback
+					onPress={this.changePopVisible}>
+					<View style={styles.imgBox}>
+						<Image
+							source={{uri: rowData.img_url}}
+							style={[styles.imgPic, {height: this.state.imgHeight,},]}/>
+						<Text style={styles.volTxt}>{rowData.volume}</Text>
+					</View>
+				</TouchableWithoutFeedback>
 				<Text style={styles.titleTxt}>{`${rowData.title} | ${rowData.pic_info}`}</Text>
 				<Text style={styles.contentTxt}>{rowData.forward}</Text>
 				<Text style={styles.authorTxt}>{rowData.words_info}</Text>
@@ -57,6 +76,12 @@ export default class OneItem extends Component{
 
 	componentDidMount() {
 		Image.getSize(this.props.rowData.img_url, this.getSizeSuccess(), this.getSizeFailure);
+	}
+
+	changePopVisible = () => {
+		this.setState({
+			popVisible: !this.state.popVisible,
+		});
 	}
 
 //img的getSize成功回调
