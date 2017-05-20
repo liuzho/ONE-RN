@@ -60,15 +60,25 @@ export default class OneItem extends Component{
 				<Text style={styles.contentTxt}>{rowData.forward}</Text>
 				<Text style={styles.authorTxt}>{rowData.words_info}</Text>
 				<View style={styles.bottom}>
-					<Image style={styles.bottomImg}
-						source={require('../img/bubble_edit.png')}/>
-					<Text style={styles.bottomTxt}>小记</Text>
+					<TouchableWithoutFeedback onPress={this.pressEdit}>
+						<View style={{flexDirection: 'row',}}>
+							<Image style={styles.bottomImg}
+								source={require('../img/bubble_edit.png')}/>
+							<Text style={styles.bottomTxt}>小记</Text>
+						</View>
+					</TouchableWithoutFeedback>
 					<View style={{flex:1,}}/>
-					<Text style={styles.bottomTxt}>{rowData.like_count}</Text>
-					<Image style={styles.bottomImg}
-						source={require('../img/bubble_like.png')}/>
-					<Image style={styles.bottomImg}
-						source={require('../img/bubble_share.png')}/>
+					<TouchableWithoutFeedback onPress={this.pressLike}>
+						<View style={{flexDirection: 'row',}}>
+							<Text style={styles.bottomTxt}>{rowData.like_count}</Text>
+							<Image style={styles.bottomImg}
+								source={require('../img/bubble_like.png')}/>
+						</View>
+					</TouchableWithoutFeedback>
+					<TouchableWithoutFeedback onPress={this.pressShare}>
+						<Image style={styles.bottomImg}
+							source={require('../img/bubble_share.png')}/>
+					</TouchableWithoutFeedback>
 				</View>
 			</View>
 		);
@@ -76,6 +86,28 @@ export default class OneItem extends Component{
 
 	componentDidMount() {
 		Image.getSize(this.props.rowData.img_url, this.getSizeSuccess(), this.getSizeFailure);
+	}
+
+
+	pressLike = () => {
+		alert('press like'); 
+	}
+
+	pressShare = () => {
+		alert('press share');
+	}
+
+	pressEdit = () => {
+		const {navigate} = this.props.appNavigation;
+		navigate('Edit',{
+			editData: this.props.rowData,
+			weather: this.props.weather,
+			imgSize: {
+				height: this.state.imgHeight,
+				width: windowWidth,
+			},
+			title: '小记',
+		});
 	}
 
 	changePopVisible = () => {

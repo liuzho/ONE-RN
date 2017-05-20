@@ -12,6 +12,7 @@ import HomeScene   from '../scene/Home';//主页
 import DetailScene from '../scene/DetailScene';//内容详情页
 import UserScene   from '../scene/UserScene';//用户界面
 import SearchScene from '../scene/SearchScene';//搜索界面
+import EditScene   from '../scene/EditScene';//编辑内容界面
 import Toolbar     from '../component/Toolbar';//Toolbar
 
 const AppNav = StackNavigator({
@@ -50,7 +51,16 @@ const AppNav = StackNavigator({
 			navigationOptions: () => ({
 				header: null,
 			}),
-		}
+		},
+		Edit: {
+			screen: EditScene,
+			navigationOptions: ({navigation}) => ({
+				header: (
+					<Toolbar
+						navigation={navigation}/>
+				),
+			}),
+		},
 	}, {
 		initialRouteParams: {
 			oneSceneNum: 0,

@@ -34,8 +34,7 @@ const HomeNav = TabNavigator({
 				tabBarIcon: ({focused, tintColor}) => (
 						<Image
 							source={focused ? imgOneAcitve : imgOne}
-							style={styles.tabImg}
-						/>
+							style={styles.tabImg}/>
 				),
 			},
 		},
@@ -45,8 +44,7 @@ const HomeNav = TabNavigator({
 				tabBarIcon: ({focused, tintColor}) => (
 					<Image
 						source={focused ? imgReadActive : imgRead}
-						style={styles.tabImg}
-					/>
+						style={styles.tabImg}/>
 				),
 			},
 		},
@@ -56,8 +54,7 @@ const HomeNav = TabNavigator({
 				tabBarIcon: ({focused, tintColor}) => (
 					<Image
 						source={focused ? imgMusicActive : imgMusic}
-						style={styles.tabImg}
-					/>
+						style={styles.tabImg}/>
 				),
 			},
 		},

@@ -7,20 +7,20 @@ import {
   Text,
   Image,
   TouchableWithoutFeedback,
+  ToastAndroid,
 } from 'react-native';
 
 export default class OneSceneImgPop extends Component{
 
 	render() {
+		ToastAndroid.show('长按图片保存(不写)',ToastAndroid.SHORT);
 		let textStyle = [styles.text,{width: this.props.imgSize.width}];
 		return(
 			<TouchableWithoutFeedback onPress={this.props.onPress}>
 				<View style={styles.body}>
 					<Text style={textStyle}>{this.props.volume}</Text>
-					<TouchableWithoutFeedback onLongPress={()=>{alert('保存图片就不写了')}}>
-						<Image style={this.props.imgSize}
-							source={{uri: this.props.imgUrl}}/>
-					</TouchableWithoutFeedback>
+					<Image style={this.props.imgSize}
+						source={{uri: this.props.imgUrl}}/>
 					<Text style={textStyle}>{this.props.info}</Text>
 				</View>
 			</TouchableWithoutFeedback>

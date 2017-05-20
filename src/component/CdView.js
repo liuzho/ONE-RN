@@ -26,14 +26,14 @@ export default class CdView extends Component{
 	}
 
 	render() {
-		let width = this.props.width;
+		let width     = this.props.width;
 		let transform = [{
 				rotate: this.state.rotate.interpolate({
         inputRange: [0, 1],//输入区间
         outputRange: ['0deg', `${60*360}deg`],//映射的输出区间
       	})
 		},];
-		let imgStyle = {
+		let imgStyle  = {
 			height: width,
 			width: width,
 			borderRadius: width,

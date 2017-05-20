@@ -15,8 +15,8 @@ export default class Toolbar extends Component{
 		super(props);
 
 		let {params} = this.props.navigation.state;
-		this.state = {
-			title: params ? params.title : '',
+		this.state   = {
+			title: params.title,
 		};
 	}
 
@@ -52,7 +52,9 @@ export default class Toolbar extends Component{
 
 //按下的是用户图标
 	pressUser = () => {
-		this.navigate('User');
+		this.navigate('User', {
+			title: '',
+		});
 	}
 //按下的是返回图标
 	pressBack = () => {
@@ -68,8 +70,8 @@ export default class Toolbar extends Component{
 	}
 
 //界面跳转
-	navigate = (sceneName) => {
-		this.props.navigation.navigate(sceneName);
+	navigate = (sceneName, params) => {
+		this.props.navigation.navigate(sceneName, params);
 	}
 }
 

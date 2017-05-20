@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import OneItem from './OneItem';
+import OneItem     from './OneItem';
 import ContentItem from './ContentItem';
 
 export default class MyListView extends Component{
@@ -38,6 +38,7 @@ export default class MyListView extends Component{
 	renderOne(rowData) {
 		return  (
 			<OneItem 
+				appNavigation={this.props.appNavigation}
 				weather={this.props.weather}
 				rowData={rowData}/> 
 		)
@@ -46,8 +47,11 @@ export default class MyListView extends Component{
 //点击item跳转到详情页面
 	onPress = (url, title) => {
 		//Stack的navigation
-		const {navigate} = this.props.navigation;
-		navigate('Detail', {title: title, url: url});
+		const {navigate} = this.props.appNavigation;
+		navigate('Detail', {
+			title: title, 
+			url: url
+		});
 	}
 }
 

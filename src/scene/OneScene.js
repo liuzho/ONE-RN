@@ -48,7 +48,7 @@ export default class OneScene extends Component{
 		let appNavigation = this.props.screenProps.appNavigation;
 		return (
 				<MyListView
-					navigation={appNavigation}
+					appNavigation={appNavigation}
 					weather={this.state.weather}
 					data={this.state.dataOne} />
 		);

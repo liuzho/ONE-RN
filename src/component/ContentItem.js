@@ -8,17 +8,17 @@ import {
   Image,
   Dimensions,
   TouchableWithoutFeedback,
+  ToastAndroid,
 } from 'react-native';
 
 import CdView from './CdView';
 
-let windowWidth    = Dimensions.get('window').width;
-const contentMovie = 5;
-const contentMusic = 4;
-
-let width   = windowWidth - 20;//内容宽度
-let widthM4 = width / 4;//宽度1/4
-let widthM2 = width / 2;//宽度1/2
+const windowWidth    = Dimensions.get('window').width;
+const contentMovie   = 5;
+const contentMusic   = 4;
+const width          = windowWidth - 20;//内容宽度
+const widthM4        = width / 4;//宽度1/4
+const widthM2        = width / 2;//宽度1/2
 
 
 export default class ContentItem extends Component{
@@ -65,15 +65,21 @@ export default class ContentItem extends Component{
 					<Text style={data.contentType == contentMovie ? styles.movieNameTxt : {height: 0,}}> {`--《${data.movieName}》`} </Text>
 					<View style={styles.bottomBox}>
 						<Text style={styles.bottomTxt}> {data.time} </Text>
-						<View style={{flex: 1,}}></View>
-						<Text style={styles.bottomTxt}> {data.likeCount} </Text>
-						<Image 
-							style={styles.bottomImg}
-							source={require('../img/bubble_like.png')} />
+						<View style={{flex: 1,}}/>
+						<TouchableWithoutFeedback onPress={this.pressLike}>
+							<View style={{flexDirection: 'row',}}>
+								<Text style={styles.bottomTxt}> {data.likeCount} </Text>
+								<Image 
+									style={styles.bottomImg}
+									source={require('../img/bubble_like.png')} />
+							</View>
+						</TouchableWithoutFeedback>
 						<View style={{width: 20,}}/>
-						<Image
-							style={styles.bottomImg}
-							source={require('../img/bubble_share.png')} />
+						<TouchableWithoutFeedback onPress={this.pressShare}>
+							<Image
+								style={styles.bottomImg}
+								source={require('../img/bubble_share.png')} />
+						</TouchableWithoutFeedback>
 					</View>
 				</View>
 			</TouchableWithoutFeedback>
@@ -82,6 +88,14 @@ export default class ContentItem extends Component{
 
 	componentDidMount() {
 		Image.getSize(this.props.rowData.img_url, this.getSizeSuccess(), this.getSizeFailure);
+	}
+
+	pressShare = () => {
+		alert('press share');
+	}
+
+	pressLike = () => {
+		ToastAndroid.show('you press like!',ToastAndroid.SHORT);
 	}
 
 	//img的getSize成功回调
