@@ -1,4 +1,4 @@
-## 仿《ONE》APP又来了！ ----//TODO
+## 仿《ONE》APP又来了！
 
 又写了一个《ONE》，别急呀，我可没copy上次写的代码~
 
@@ -8,15 +8,15 @@
 
 1. 退而求其次的实现方式
 2. 代码结构可能不太规范/清晰
-3. 可能还有众多bug呢(我不听我不听)
+3. 可能还有bug呢(我不听我不听)
 
 项目地址 => **[https://github.com/liuzho/ONE-RN](https://github.com/liuzho/ONE-RN)**
 
 我的个人主页 => **[https://liuzho.com](https://liuzho.com)**
 
-尽管Kotlin风光无限占据所有Google粉程序猿的大脑(包括我而且我并不会Kotlin)，但我还是把这个Demo发出来了？？！
+尽管Kotlin风光无限几乎对各大社区进行了**屠版**，但我还是冒着被淹没的风险把这个Demo发出来了，万一有人看呢(逃..
 
-没事，ReactNative自有魅力！(全给你学了管你谁有魅力).....
+没事，ReactNative自有魅力！(各种技能全给你学了管你谁有魅力).....
 
 ### 这个Demo对你有没有帮助？
 
@@ -30,7 +30,12 @@
 
 当然了，国际惯例，甩预览图：
 
+![预览1](https://dn-mhke0kuv.qbox.me/867f7f4a037839bc4c46.gif)
 
+![预览2](https://dn-mhke0kuv.qbox.me/7d961f98dce8d97373cd.gif)
+
+
+![预览3](https://dn-mhke0kuv.qbox.me/564b889b51d412a45d97.gif)
 
 ### 在你的电脑上运行
 
@@ -44,7 +49,7 @@
 
 4. `react-native run-ios` or `react-native run-android`
 
-理论上iOS和Android都可以运行
+理论上iOS(测试可用，部分组件如ToastAndroid不通用报黄)和Android都可以运行
 
 ### 项目情况
 
@@ -89,6 +94,8 @@
 	API：戳这里=>**[ONE的API](https://github.com/jokermonn/-Api/blob/master/ONEv3.5.0~.md)**
 	
 	注：若侵犯《ONE》权利，我将及时删除所有相关内容
+
+9. 我将保持更新/优化一段时间，毕竟还有一些细节没完成，还有挺多需要优化的地方
 
 ## 结语
 

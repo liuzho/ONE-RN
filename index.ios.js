@@ -7,13 +7,19 @@ import {
 import AppNav from './src/navigator/AppNav';
 
 class App extends Component{
-  render() {
-    return(
-      <AppNav
-        screenProps={{navigation: this.props.navigation}}
-        style={{flex: 1,}} />
-    );
-  }
+
+	constructor(props){
+		super(props);
+		console.ignoredYellowBox = ['Warning: BackAndroid','Warning: View.propTypes'];
+	}
+
+	render() {
+		return(
+			<AppNav
+				screenProps={{navigation: this.props.navigation}}
+				style={{flex: 1,}} />
+		);
+	}
 }
 
 AppRegistry.registerComponent('ONE', () => App);
