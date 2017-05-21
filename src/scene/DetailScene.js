@@ -15,6 +15,7 @@ export default class DetailScene extends Component{
 	webView = null;
 
 	render() {
+		
 		let url = this.props.navigation.state.params.url;
 		return (
 			<View style={styles.body}>

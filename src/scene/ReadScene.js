@@ -38,7 +38,7 @@ export default class ReadScene extends Component{
 	renderLv() {
 		return(
 			<MyListView
-				navigation={this.props.screenProps.appNavigation}
+				appNavigation={this.props.screenProps.appNavigation}
 				data={this.state.readData}/>
 		);
 	}
