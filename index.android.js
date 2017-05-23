@@ -10,7 +10,7 @@ class App extends Component{
 
 	constructor(props){
 		super(props);
-		console.ignoredYellowBox = ['Warning: BackAndroid','Warning: View.propTypes'];
+		// console.ignoredYellowBox = ['Warning: BackAndroid','Warning: View.propTypes'];
 	}
 
 	render() {
